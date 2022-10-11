@@ -1,6 +1,11 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ListController;
+use App\Http\Controllers\PostController;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\TrendPostController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,7 +27,20 @@ Route::middleware([
     config('jetstream.auth_session'),
     'verified'
 ])->group(function () {
-    Route::get('/dashboard', function () {
-        return view('admin.profile.index');
-    })->name('dashboard');
+
+    // go admin dashboard
+    Route::get('dashboard',[ProfileController::class,'goDashboard'])->name('dashboard');
+
+    // admin lists
+    Route::get('admin/list',[ListController::class,'goAdminList'])->name('admin#list');
+
+    // category
+    Route::get('category',[CategoryController::class,'showCategory'])->name('admin#category');
+
+    // posts
+    Route::get('post',[PostController::class,'showPost'])->name('admin#post');
+
+    // trending post
+    Route::get('trendpost',[TrendPostController::class,'showTrendPost'])->name('admin#trendPost');
+
 });

@@ -15,15 +15,17 @@
 
             {{-- side bar --}}
             <div class="col-3 text-center">
-                <button class="btn btn-dark text-white w-100 my-2"><i class="fa-solid fa-user me-2"></i>Profile</button>
-                <button class="btn btn-dark text-white w-100 my-2"><i class="fa-solid fa-users me-2"></i>Admin List</button>
-                <button class="btn btn-dark text-white w-100 my-2"><i class="fa-solid fa-list me-2"></i>Category List</button>
-                <button class="btn btn-dark text-white w-100 my-2"><i class="fa-solid fa-newspaper me-2"></i>Posts</button>
-                <button class="btn btn-dark text-white w-100 my-2"><i class="fa-solid fa-arrow-trend-up me-2"></i>Trending Posts</button>
+                <a href="{{route('dashboard')}}" class="btn btn-dark text-white w-100 my-2"><i class="fa-solid fa-user me-2"></i>Profile</a>
+                <a href="{{route('admin#list')}}" class="btn btn-dark text-white w-100 my-2"><i class="fa-solid fa-users me-2"></i>Admin List</a>
+                <a href="{{route('admin#category')}}" class="btn btn-dark text-white w-100 my-2"><i class="fa-solid fa-list me-2"></i>Category List</a>
+                <a href="{{route('admin#post')}}" class="btn btn-dark text-white w-100 my-2"><i class="fa-solid fa-newspaper me-2"></i>Posts</a>
+                <a href="{{route('admin#trendPost')}}" class="btn btn-dark text-white w-100 my-2"><i class="fa-solid fa-arrow-trend-up me-2"></i>Trending Posts</a>
+
                 <form action="{{route('logout')}}" method="post">
                     @csrf
                     <button class="btn btn-dark text-white w-100 my-2" type="submit"><i class="fa-solid fa-right-from-bracket me-2"></i>Logout</button>
                 </form>
+
             </div>
 
             {{-- content --}}
