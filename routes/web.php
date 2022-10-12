@@ -38,6 +38,8 @@ Route::middleware([
     // admin lists
     Route::get('admin/list',[ListController::class,'goAdminList'])->name('admin#list');
     Route::get('admin/list/delete/{id}',[ListController::class,'deleteData'])->name('admin#delete');
+    Route::post('admin/list/search',[ListController::class,'searchData'])->name('admin#search');
+
     // category
     Route::get('category',[CategoryController::class,'showCategory'])->name('admin#category');
 
