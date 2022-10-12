@@ -32,6 +32,10 @@ Route::middleware([
     Route::get('dashboard',[ProfileController::class,'goDashboard'])->name('dashboard');
     Route::post('admin/update',[ProfileController::class,'updateData'])->name('admin#updateData');
 
+    // change password
+    Route::get('admin/changePassword',[ProfileController::class,'changePassword'])->name('admin#changePassword');
+    Route::post('admin/changePassword',[ProfileController::class,'passwordChange'])->name('admin#passwordChange');
+
     // admin lists
     Route::get('admin/list',[ListController::class,'goAdminList'])->name('admin#list');
 

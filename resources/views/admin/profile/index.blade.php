@@ -72,7 +72,7 @@
                 <div class="form-group row">
                     <div class="col-sm-10 offset-sm-2 d-flex align-items-center justify-content-between">
                         <button type="submit" class="btn btn-primary">Update</button>
-                        <a class="text-muted">Change Password</a>
+                        <a href="{{route('admin#changePassword')}}" class="text-muted">Change Password</a>
                     </div>
                 </div>
 
