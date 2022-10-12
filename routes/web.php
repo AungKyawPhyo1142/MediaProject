@@ -30,6 +30,7 @@ Route::middleware([
 
     // go admin dashboard
     Route::get('dashboard',[ProfileController::class,'goDashboard'])->name('dashboard');
+    Route::post('admin/update',[ProfileController::class,'updateData'])->name('admin#updateData');
 
     // admin lists
     Route::get('admin/list',[ListController::class,'goAdminList'])->name('admin#list');
