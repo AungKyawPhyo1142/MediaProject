@@ -2,6 +2,15 @@
 
 @section('content')
 <div class="col-12">
+                    {{-- alert start --}}
+                    @if (session('deleteSuccess'))
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                        <strong>{{session('deleteSuccess')}}</strong>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                    @endif
+                    {{-- alert end --}}
+
     <div class="card">
       <div class="card-header">
         <h3 class="card-title">Admin List</h3>
@@ -23,40 +32,31 @@
         <table class="table table-hover text-nowrap text-center">
           <thead>
             <tr>
-              <th>Order ID</th>
-              <th>Customer Name</th>
-              <th>Pizza Name</th>
-              <th>Carrier Name</th>
-              <th>Payment With</th>
-              <th>Order Time</th>
+              <th>ID</th>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Gender</th>
+              <th>Phone</th>
+              <th>Address</th>
               <th></th>
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>1</td>
-              <td>Sithu</td>
-              <td>Seafood Pizza</td>
-              <td>Mg Kyaw Kyaw</td>
-              <td>Card</td>
-              <td>2/2/2021</td>
-              <td>
-                <button class="btn btn-sm bg-dark text-white"><i class="fas fa-edit"></i></button>
-                <button class="btn btn-sm bg-danger text-white"><i class="fas fa-trash-alt"></i></button>
-              </td>
-            </tr>
-            <tr>
-              <td>2</td>
-              <td>Tun Tun</td>
-              <td>Seafood Pizza</td>
-              <td>Mg Kyaw Kyaw</td>
-              <td>Card</td>
-              <td>2/2/2021</td>
-              <td>
-                <button class="btn btn-sm bg-dark text-white"><i class="fas fa-edit"></i></button>
-                <button class="btn btn-sm bg-danger text-white"><i class="fas fa-trash-alt"></i></button>
-              </td>
-            </tr>
+            @foreach ($userData as $item)
+                <tr>
+                    <td>{{$item['id']}}</td>
+                    <td>{{$item['name']}}</td>
+                    <td>{{$item['email']}}</td>
+                    <td>{{$item['gender']}}</td>
+                    <td>{{$item['phone']}}</td>
+                    <td>{{$item['address']}}</td>
+                    <td>
+                        @if ($item['id'] != Auth::user()->id)
+                            <a href="{{route('admin#delete',$item['id'])}}" class="btn btn-sm bg-danger text-white"><i class="fas fa-trash-alt"></i></a>
+                        @endif
+                    </td>
+                </tr>
+            @endforeach
           </tbody>
         </table>
       </div>
