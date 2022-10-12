@@ -86,7 +86,7 @@
     </div>
   </aside>
 
-  <div class="content-wrapper">
+  <div class="content-wrapper bg-white">
     <section class="content">
       <div class="container-fluid">
         <div class="row mt-4">
