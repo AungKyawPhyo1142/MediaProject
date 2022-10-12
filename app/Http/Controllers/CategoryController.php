@@ -36,6 +36,15 @@ class CategoryController extends Controller
         return back()->with(['deleteSuccess'=>'Category deleted successfully!']);
     }
 
+    // search data
+    public function searchData(Request $req){
+        $data = Category::  where('title','like','%'.$req->searchKey.'%')
+                                    ->get();
+
+        return view('admin.category.index',compact('data'));
+
+    }
+
     // get category data
     private function getCategoryData($req){
         return [

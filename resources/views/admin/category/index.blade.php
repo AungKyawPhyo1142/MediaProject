@@ -52,7 +52,7 @@
         <h3 class="card-title">Category List</h3>
 
         <div class="card-tools">
-            <form action="" method="POST">
+            <form action="{{route('admin#searchCategory')}}" method="POST">
                 @csrf
                 <div class="input-group input-group-sm" style="width: 150px;">
                     <input type="text" name="searchKey" class="form-control float-right" placeholder="Search">

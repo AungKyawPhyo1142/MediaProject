@@ -44,6 +44,7 @@ Route::middleware([
     Route::get('category',[CategoryController::class,'showCategory'])->name('admin#category');
     Route::post('category/create',[CategoryController::class,'createCategory'])->name('admin#createCategory');
     Route::get('category/delete/{id}',[CategoryController::class,'deleteCategory'])->name('admin#deleteCategory');
+    Route::post('category/search',[CategoryController::class,'searchData'])->name('admin#searchCategory');
 
     // posts
     Route::get('post',[PostController::class,'showPost'])->name('admin#post');
