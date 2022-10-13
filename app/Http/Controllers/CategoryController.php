@@ -45,6 +45,30 @@ class CategoryController extends Controller
 
     }
 
+    // go to category edit page
+    public function categoryEditPage($id){
+        $data = Category::where('id',$id)->first();
+        return view('admin.category.updateCategory',compact('data'));
+    }
+
+    // update category data
+    public function updateCategory(Request $req, $id){
+
+        $validator = $this->checkValidation($req);
+
+        if($validator->fails()){
+            return back()->withErrors($validator)
+                        ->withInput();
+        }
+
+        $data = $this->getCategoryData($req);
+        Category::where('id',$id)->update($data);
+
+        return redirect()->route('admin#category')->with(['updateSuccess'=>'Category data updated successfully!']);
+        // return back()->with(['updateSuccess'=>'Category data updated successfully!']);
+
+    }
+
     // get category data
     private function getCategoryData($req){
         return [

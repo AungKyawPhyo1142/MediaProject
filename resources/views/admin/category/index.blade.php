@@ -4,7 +4,7 @@
     <div class="col-4">
         <div class="card">
             <div class="card-header">
-                <div class="card-title">Category Informations</div>
+                <div class="card-title">Insert Category Informations</div>
             </div>
             <div class="card-body">
                 <form action="{{route('admin#createCategory')}}" method="POST">
@@ -43,6 +43,7 @@
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
         @endif
+
         {{-- alert end --}}
     </div>
 
@@ -83,7 +84,7 @@
                     <td>{{$item->title}}</td>
                     <td>{{$item->description}}</td>
                     <td>
-                        <a href="" class="btn btn-sm bg-dark text-white"><i class="fa-solid fa-pen-to-square"></i></a>
+                        <a href="{{route('admin#categoryEditPage',$item->id)}}" class="btn btn-sm bg-dark text-white"><i class="fa-solid fa-pen-to-square"></i></a>
                         <a href="{{route('admin#deleteCategory',$item->id)}}" class="btn btn-sm bg-danger text-white"><i class="fas fa-trash-alt"></i></a>
                     </td>
                 </tr>
@@ -93,6 +94,14 @@
       </div>
       <!-- /.card-body -->
     </div>
+
+    @if (session('updateSuccess'))
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <strong>{{session('updateSuccess')}}</strong>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    @endif
+
 
     </div>
 @endsection
