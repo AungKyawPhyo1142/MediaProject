@@ -3,7 +3,6 @@
 @section('content')
     <div class="col-md-10 offset-1">
 
-
         <div class="card">
             <div class="card-header">
                 <div class="card-title">Category Informations</div>
