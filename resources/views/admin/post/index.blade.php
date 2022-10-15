@@ -114,8 +114,8 @@
                     <td>{{$item['title']}}</td>
                     <td>{{Str::words($item['description'],4,'...')}}</td>
                     <td>
-                        <a href="{{route('admin#categoryEditPage',$item->id)}}" class="btn btn-sm bg-dark text-white"><i class="fa-solid fa-pen-to-square"></i></a>
-                        <a href="{{route('admin#deleteCategory',$item->id)}}" class="btn btn-sm bg-danger text-white"><i class="fas fa-trash-alt"></i></a>
+                        <a href="" class="btn btn-sm bg-dark text-white"><i class="fa-solid fa-pen-to-square"></i></a>
+                        <a href="{{route('admin#deletePost',$item['id'])}}" class="btn btn-sm bg-danger text-white"><i class="fas fa-trash-alt"></i></a>
                     </td>
                 </tr>
             @endforeach
@@ -128,6 +128,12 @@
     @if (session('updateSuccess'))
         <div class="alert alert-success alert-dismissible fade show" role="alert">
             <strong>{{session('updateSuccess')}}</strong>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    @endif
+    @if (session('deleteSuccess'))
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <strong>{{session('deleteSuccess')}}</strong>
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
     @endif

@@ -6,6 +6,7 @@ use Carbon\Carbon;
 use App\Models\Post;
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Validator;
 
 class PostController extends Controller
@@ -47,6 +48,22 @@ class PostController extends Controller
         Post::create($data);
         return back()->with(['insertSuccess'=>'Post inserted successfully!']);
 
+    }
+
+    // delete posts
+    public function deletePost($id){
+
+
+        $postData = Post::where('id',$id)->first();
+
+        if(File::exists(public_path().'/postImage/'.$postData->image)){
+            File::delete(public_path().'/postImage/'.$postData->image);
+        }
+
+        // delete from db
+        Post::where('id',$id)->delete();
+
+        return back()->with(['deleteSuccess'=>'Post deleted successfully!']);
     }
 
     // check post validation
