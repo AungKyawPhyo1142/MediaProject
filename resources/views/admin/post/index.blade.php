@@ -114,7 +114,7 @@
                     <td>{{$item['title']}}</td>
                     <td>{{Str::words($item['description'],4,'...')}}</td>
                     <td>
-                        <a href="" class="btn btn-sm bg-dark text-white"><i class="fa-solid fa-pen-to-square"></i></a>
+                        <a href="{{route('admin#postEditPage',$item['id'])}}" class="btn btn-sm bg-dark text-white"><i class="fa-solid fa-pen-to-square"></i></a>
                         <a href="{{route('admin#deletePost',$item['id'])}}" class="btn btn-sm bg-danger text-white"><i class="fas fa-trash-alt"></i></a>
                     </td>
                 </tr>

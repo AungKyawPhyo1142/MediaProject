@@ -66,6 +66,65 @@ class PostController extends Controller
         return back()->with(['deleteSuccess'=>'Post deleted successfully!']);
     }
 
+    // redirect to post edit page
+    public function postUpdatePage($id){
+        $data = Post::where('id',$id)->first();
+        $category = Category::get();
+        return view('admin.post.updatePost',compact('data','category'));
+    }
+
+    // update post data
+    public function postUpdateData($id,Request $req){
+
+        // checking validation
+        $validator = $this->postValidationCheck($req);
+
+        if($validator->fails()){
+            return back()->withErrors($validator)
+                        ->withInput();
+        }
+
+        if(isset($req->postImage)){
+            $this->updateDataWithImage($id,$req);
+        }
+        else{
+            $this->updateWithoutImage($id,$req);
+        }
+
+        return redirect()->route('admin#post')->with(['updateSuccess'=>'Post data updated successfully!']);
+
+    }
+
+    // update post without image
+    private function updateWithoutImage($id,$req){
+        $data = [
+            'title' => $req->postTitle,
+            'category_id' => $req->postCategory,
+            'description' => $req->postDescription,
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now()
+        ];
+        Post::where('id',$id)->update($data);
+    }
+
+    // update post data with image
+    private function updateDataWithImage($id,$req){
+        $file = $req->file('postImage');
+        $fileName = uniqid().'_'.$file->getClientOriginalName();
+
+        $postData = Post::where('id',$id)->first();
+
+        if($postData->image != null){
+            if(File::exists(public_path().'/postImage/'.$postData->image)){
+                File::delete(public_path().'/postImage/'.$postData->image);
+            }
+        }
+
+        $file->move(public_path().'/postImage',$fileName);
+        $data = $this->getPostData($req,$fileName);
+        Post::where('id',$id)->update($data);
+    }
+
     // check post validation
     private function postValidationCheck($req){
         $validator = Validator::make($req->all(),[
