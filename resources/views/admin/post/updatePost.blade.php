@@ -53,8 +53,9 @@
                                 @endif
                             </div>
                         </div>
-                        <div class="button-group">
-                            <button type="submit" class="btn btn-primary w-100"><i class="fa-solid fa-pen-to-square me-1"></i>Edit</button>
+                        <div class="button-group col-6 d-flex flex-col justify-content-between">
+                            <a href="{{route('admin#post')}}" class="btn btn-dark"><i class="fa-solid fa-angle-left me-1"></i>Back</a>
+                            <button type="submit" class="btn btn-primary"><i class="fa-solid fa-pen-to-square me-1"></i>Edit</button>
                         </div>
 
                     </form>
