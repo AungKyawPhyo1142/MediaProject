@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\API\PostController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,3 +26,6 @@ Route::post('user/register',[AuthController::class,'register']);
 Route::get('category',function(){
     return response()->json('This is category');
 })->middleware('auth:sanctum');
+
+// api to return all the posts with json
+Route::get('allPost',[PostController::class,'getAllPosts']);
