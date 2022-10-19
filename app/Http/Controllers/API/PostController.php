@@ -15,4 +15,13 @@ class PostController extends Controller
             'post' => $posts
         ], 200);
     }
+
+    //search post
+        public function searchPost(Request $req){
+            $post = Post::where('title','like','%'.$req->key.'%')->get();
+            return response()->json([
+                'searchData' => $post
+            ], 200);
+        }
+
 }
