@@ -24,4 +24,12 @@ class PostController extends Controller
             ], 200);
         }
 
+    // post details
+    public function postDetails(Request $req){
+        $post = Post::where('id',$req->news_id)->first();
+        return response()->json([
+            'post' => $post
+        ], 200);
+    }
+
 }

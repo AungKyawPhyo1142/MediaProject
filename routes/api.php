@@ -32,6 +32,7 @@ Route::get('category',function(){
 // return all the posts with json
 Route::get('allPost',[PostController::class,'getAllPosts']);
 Route::post('searchPost',[PostController::class,'searchPost']);
+Route::post('detailsPost',[PostController::class,'postDetails']);
 
 /*----------------------- CATEGORY api -----------------------*/
 Route::get('allCategory',[CategoryController::class,'getAllCategories']);
