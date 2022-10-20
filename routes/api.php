@@ -35,3 +35,4 @@ Route::post('searchPost',[PostController::class,'searchPost']);
 
 /*----------------------- CATEGORY api -----------------------*/
 Route::get('allCategory',[CategoryController::class,'getAllCategories']);
+Route::post('searchWithCategory',[CategoryController::class,'searchWithCategory']);
