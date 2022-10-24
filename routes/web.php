@@ -57,5 +57,5 @@ Route::middleware([
 
     // trending post
     Route::get('trendpost',[TrendPostController::class,'showTrendPost'])->name('admin#trendPost');
-
+    Route::get('trendpost/details/{id}/{post_count}',[TrendPostController::class,'showDetails'])->name('admin#trendPostDetails');
 });

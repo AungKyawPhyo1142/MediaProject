@@ -45,10 +45,11 @@
 
                                 </td>
                                 <td class="col">{{ $item['title'] }}</td>
-                                <td class="col"><i class="fa-solid fa-eye me-1"></i>0</td>
+                                <td class="col"><i class="fa-solid fa-eye me-1"></i>{{ $item['post_count'] }}</td>
                                 <td class="col">
-                                    <button class="btn btn-sm bg-dark text-white border rounded"><i
-                                            class="fa-solid fa-circle-info"></i></button>
+                                    <a href="{{ route('admin#trendPostDetails', [$item['id'], $item['post_count']]) }}"
+                                        class="btn btn-sm bg-dark text-white border rounded"><i
+                                            class="fa-solid fa-circle-info"></i></a>
                                 </td>
                             </tr>
                         @endforeach
@@ -58,7 +59,7 @@
             <!-- /.card-body -->
         </div>
         <!-- /.card -->
-        {{ $posts->links() }}
+        {{-- {{ $posts->links() }} --}}
 
     </div>
 @endsection
