@@ -1,70 +1,64 @@
 @extends('admin.layouts.master')
 
 @section('content')
-<div class="col-12">
-    <div class="card">
-      <div class="card-header">
-        <h3 class="card-title">Trending Posts</h3>
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">Trending Posts</h3>
 
-        <div class="card-tools">
-          <div class="input-group input-group-sm" style="width: 150px;">
-            <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
+                <div class="card-tools">
+                    <div class="input-group input-group-sm" style="width: 150px;">
+                        <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
 
-            <div class="input-group-append">
-              <button type="submit" class="btn btn-default">
-                <i class="fas fa-search"></i>
-              </button>
+                        <div class="input-group-append">
+                            <button type="submit" class="btn btn-default">
+                                <i class="fas fa-search"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
             </div>
-          </div>
+            <!-- /.card-header -->
+            <div class="card-body table-responsive p-0">
+                <table class="table table-hover text-nowrap text-center">
+                    <thead>
+                        <tr class="row">
+                            <th class="col-2">ID</th>
+                            <th class="col">Image</th>
+                            <th class="col">Post Title</th>
+                            <th class="col">Views</th>
+                            <th class="col">Info</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($posts as $item)
+                            <tr class="row">
+                                <td class="col-2">{{ $item['id'] }}</td>
+                                <td class="col">
+                                    @if ($item['image'] != null)
+                                        <img src="{{ asset('postImage/' . $item['image']) }}"
+                                            class="img-thumbnail  w-50 shadow-sm">
+                                    @else
+                                        <img src="{{ asset('defaultImage/default_post_image.png') }}"
+                                            class="img-thumbnail w-50 shadow-sm">
+                                    @endif
+
+                                </td>
+                                <td class="col">{{ $item['title'] }}</td>
+                                <td class="col"><i class="fa-solid fa-eye me-1"></i>0</td>
+                                <td class="col">
+                                    <button class="btn btn-sm bg-dark text-white border rounded"><i
+                                            class="fa-solid fa-circle-info"></i></button>
+                                </td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
+            <!-- /.card-body -->
         </div>
-      </div>
-      <!-- /.card-header -->
-      <div class="card-body table-responsive p-0">
-        <table class="table table-hover text-nowrap text-center">
-          <thead>
-            <tr>
-              <th>Order ID</th>
-              <th>Customer Name</th>
-              <th>Pizza Name</th>
-              <th>Carrier Name</th>
-              <th>Payment With</th>
-              <th>Order Time</th>
-              <th></th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>1</td>
-              <td>Sithu</td>
-              <td>Seafood Pizza</td>
-              <td>Mg Kyaw Kyaw</td>
-              <td>Card</td>
-              <td>2/2/2021</td>
-              <td>
-                <button class="btn btn-sm bg-dark text-white"><i class="fas fa-edit"></i></button>
-                <button class="btn btn-sm bg-danger text-white"><i class="fas fa-trash-alt"></i></button>
-              </td>
-            </tr>
-            <tr>
-              <td>2</td>
-              <td>Tun Tun</td>
-              <td>Seafood Pizza</td>
-              <td>Mg Kyaw Kyaw</td>
-              <td>Card</td>
-              <td>2/2/2021</td>
-              <td>
-                <button class="btn btn-sm bg-dark text-white"><i class="fas fa-edit"></i></button>
-                <button class="btn btn-sm bg-danger text-white"><i class="fas fa-trash-alt"></i></button>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-      <!-- /.card-body -->
+        <!-- /.card -->
+        {{ $posts->links() }}
+
     </div>
-    <!-- /.card -->
-  </div>
-
-
-
 @endsection
