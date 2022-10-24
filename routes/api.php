@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\API\PostController;
 use App\Http\Controllers\API\CategoryController;
+use App\Http\Controllers\API\ActionLogsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,10 +25,6 @@ use App\Http\Controllers\API\CategoryController;
 Route::post('user/login',[AuthController::class,'login']);
 Route::post('user/register',[AuthController::class,'register']);
 
-Route::get('category',function(){
-    return response()->json('This is category');
-})->middleware('auth:sanctum');
-
 /*----------------------- POST api -----------------------*/
 // return all the posts with json
 Route::get('allPost',[PostController::class,'getAllPosts']);
@@ -37,3 +34,6 @@ Route::post('detailsPost',[PostController::class,'postDetails']);
 /*----------------------- CATEGORY api -----------------------*/
 Route::get('allCategory',[CategoryController::class,'getAllCategories']);
 Route::post('searchWithCategory',[CategoryController::class,'searchWithCategory']);
+
+/*----------------------- ActionLogs api -----------------------*/
+Route::post('actionLogs',[ActionLogsController::class,'setActionLogs']);
